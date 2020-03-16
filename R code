@@ -17,3 +17,14 @@ col.names = c("Post_abr", "Conflict_degree", "Union_degree", "dummy", "Sector_A_
          -0.287926528          -0.010426461 
        Data$Ag_forces 
           0.005708692
+
+# statistical significance
+
+> summary(conflict.lm)
+
+                      t value Pr(>|t|)    
+(Intercept)             0.479 0.634692    
+Data$Union_degree       3.809 0.000438 ***
+Data$dummy             -1.058 0.295837    
+Data$Sector_A_workers  -0.776 0.442250    
+Data$Ag_forces          0.265 0.792003 
