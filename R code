@@ -1,0 +1,19 @@
+# Importation of the data
+
+> Data <- read.csv("http://users.stat.ufl.edu/~winner/data/rtw.dat", header = FALSE, sep= "", dec =".", 
+col.names = c("Post_abr", "Conflict_degree", "Union_degree", "dummy", "Sector_A_workers", "Ag_forces"))
+
+# multiple linear regression
+
+> conflict.formula <- Data$Conflict_degree ~ Data$Union_degree + Data$dummy + Data$Sector_A_workers+ Data$Ag_forces
+> conflict.lm <- lm(conflict.formula, data = Data)
+> coef(conflict.lm)
+
+# output
+
+          (Intercept)     Data$Union_degree 
+          0.216331529           0.049917706 
+           Data$dummy Data$Sector_A_workers 
+         -0.287926528          -0.010426461 
+       Data$Ag_forces 
+          0.005708692
