@@ -26,3 +26,15 @@ plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## Introduction
+
+In US labor policies, union security agreement is an agreement where an employer and a labor union agree on what extent employees have to join the labor union and/or either if the employers will collect fees for this participation.
+In consequences, employees may be forced to join labor union as a condition for hiring, and to pay for representation. This means that in order to work, you have to pay.
+
+Right-to-work laws prohibit such union security agreement.  It is adopted in some states, called « Right-to-work states », and not in others, called « union-shop states ».
+However we can suppose that in right-to-work states, employees can be poorly represented. That is what defenders of union-shop states says, and that in right-to-work states, wages are lower, and poverty rate and mortality at work rate are higher.
+
+Right-to-work laws were questionned many times. A major claim to justify their usefulness is that work hours lost in stoppages in some states were lessened thanks to the law.
+The purpose of this study is to assess whether this statement is true, and if there is any correlation between right-to-work laws and industrial conflict.
+
