@@ -31,11 +31,72 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 
 In US labor policies, an union security agreement is an agreement between an employer and a labor union. They agree to what extent employees have to join the labor union and/or if the employers will collect fees for this participation.
 
-In consequences, employees may be forced to join labor union as a condition for hiring, and to pay for representation. _This means that in order to work, you have to pay (are you sure about this line ?)._
-
-Right-to-work laws prohibit such union security agreement.  It is adopted in some states, called « Right-to-work states », and not in others, called « union-shop states ».
+ In consequence, employees may be forced to join labor unions as a condition for hiring, and to pay for representation. _This means that in order to work, you have to pay (are you sure about this line ?)._
+ 
+Right-to-work laws prohibit such union security agreements. It is adopted in some states, called « Right-to-work states », and not in others, called « union-shop states ».
 We can suppose that in right-to-work states, employees can be poorly represented. _That is what defenders of union-shop states say,_ and that in right-to-work states, wages are lower, and poverty rate and mortality at work rate are higher.
 
-Right-to-work laws were questionned many times. A major claim to justify their usefulness is that work hours lost in stoppages in some states were lessened thanks to the law.
+Right-to-work laws were questioned many times. A major claim to justify their usefulness is that work hours lost in stoppages in some states were lessened thanks to the law.
 The purpose of this study is to assess whether this statement is true, and if there is any correlation between right-to-work laws and industrial conflict.
+
+## First analysis
+
+A first step in our study is to compare work hours lost in stoppages in right-to-work states and union shop-states. We can observe the difference of distribution on the following plot.
+ 
+![alt text here](Graphes/conflict_versus_dummy.png)
+
+The causes for this observed difference may be something else than existence or non-existence of a right-to-work law. Therefore we will use factors that vary between the two categories of states, and conduct a multiple linear regression.
+
+## The parameters
+
+We consider other variables that differ between right-to-work state and union-shop states, to see if there is a causative effect on the level of industrial conflict.
+
+# Unionization degree, count in percent of unionized workforce.
+ 
+![alt text here](Graphes/union_versus_dummy.png)
+
+Unionization degree vary a lot between the two type of states.
+Indeed, it is logical to think that unionization is higher in forced-union state.
+And unionization might have a correlation for more industrial conflict.
+
+# union-shop dummy
+
+Which indicates whether a state is right-to-work or union-shop. By including it in the regression, we can assess its importance.
+
+# Non-unionized industry
+Sector A regroup relatively non-unionized industry, such as food, textile and apparel.
+ 
+![alt text here](Graphes/sectorA_versus_dummy.png)
+
+Right-to-work states seem to have more « Sector A » workers.
+Dispersion of union strength could causes less stoppages
+
+# Relative size of the agricultural labor force.
+ 
+![alt text here](Graphes/Ag_versus_dummy.png)
+
+According to the plot, agriculture seems more present in the right-to-work state and might be a factor for less stoppages, because it is a relatively non-unionized industry.
+
+## The regression
+
+After doing our regression, we find such coefficient :
+ 
+          (Intercept)     Data$Union_degree 
+          0.043266306           0.009983541 
+        Data$dummy            Data$Sector_A_workers 
+         -0.057585306          -0.002085292 
+       Data$Ag_forces 
+          0.001141738 
+          
+And such p-values associated with the coefficient : 
+
+                     		 	t value 		Pr(>|t|)    
+(Intercept)            		 0.479 		0.634692    
+Data$Union_degree      	 3.809 		0.000438 ***
+Data$dummy             		-1.058 		0.295837    
+Data$Sector_A_workers 	 -0.776 	0.442250    
+Data$Ag_forces        		  0.265 	0.792003 
+
+We observe that only unionization has sufficiently small p values to reject the null hypothesis that unionization and industrial conflict have no correlation to 0.001 significance level.
+More importantly, this statistical study does not let us conclude that there is any correlation between right-to-work law and industrial conflict.
 
