@@ -83,7 +83,7 @@ After doing our regression, we find such coefficient :
  
           (Intercept)     Data$Union_degree 
           0.043266306           0.009983541 
-        Data$dummy            Data$Sector_A_workers 
+           Data$dummy Data$Sector_A_workers 
          -0.057585306          -0.002085292 
        Data$Ag_forces 
           0.001141738 
@@ -91,11 +91,11 @@ After doing our regression, we find such coefficient :
 And such p-values associated with the coefficient : 
 
                      		 	t value 		Pr(>|t|)    
-(Intercept)            		 0.479 		0.634692    
-Data$Union_degree      	 3.809 		0.000438 ***
-Data$dummy             		-1.058 		0.295837    
-Data$Sector_A_workers 	 -0.776 	0.442250    
-Data$Ag_forces        		  0.265 	0.792003 
+(Intercept)            		  0.479 		0.634692    
+Data$Union_degree      	   3.809 		0.000438 ***
+Data$dummy             	 	-1.058 		0.295837    
+Data$Sector_A_workers 	   -0.776 	 0.442250    
+Data$Ag_forces        		   0.265 	 0.792003 
 
 We observe that only unionization has sufficiently small p values to reject the null hypothesis that unionization and industrial conflict have no correlation to 0.001 significance level.
 More importantly, this statistical study does not let us conclude that there is any correlation between right-to-work law and industrial conflict.
