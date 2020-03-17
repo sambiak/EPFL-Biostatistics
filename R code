@@ -1,22 +1,53 @@
 # Importation of the data
 
-> Data <- read.csv("http://users.stat.ufl.edu/~winner/data/rtw.dat", header = FALSE, sep= "", dec =".", 
-col.names = c("Post_abr", "Conflict_degree", "Union_degree", "dummy", "Sector_A_workers", "Ag_forces"))
+> Brut_data <- read.csv("http://users.stat.ufl.edu/~winner/data/rtw.dat", header = FALSE, sep= "", dec =".", col.names = c("Post_abr", "Conflict_degree", "Union_degree", "dummy", "Sector_A_workers", "Ag_forces"))
+> yearly_conflict<-(Brut_data$Conflict_degree / 5) # conflict are distributed over 5 years.
+> Data<-data.frame(Brut_data,yearly_conflict)
+
+# First analysis
+
+graphics.off()
+par(pty="s") 
+boxplot(Data$yearly_conflict ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "% of work hours lost in stoppages per year")
+
+# Statistical test tentative
+
+> t.test(Data$yearly_conflict ~ Data$dummy)
+
+# Parameters
+# 1) Unionization degree
+
+graphics.off()
+par(pty="s") 
+boxplot(Data$Union_degree ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "% of unionized workforce")
+
+# 3) Non-unionized industry
+
+graphics.off()
+par(pty="s") 
+boxplot(Data$Sector_A_workers ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "% of workforce in sector A")
+
+# 4) Relative size of agricultural labor force
+
+graphics.off()
+par(pty="s") 
+boxplot(Data$Ag_forces ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "% of workforce in agriculture")
 
 # multiple linear regression
 
-> conflict.formula <- Data$Conflict_degree ~ Data$Union_degree + Data$dummy + Data$Sector_A_workers+ Data$Ag_forces
+> conflict.formula <- Data$yearly_conflict ~ Data$Union_degree + Data$dummy + Data$Sector_A_workers+ Data$Ag_forces
 > conflict.lm <- lm(conflict.formula, data = Data)
 > coef(conflict.lm)
 
 # output
 
-          (Intercept)     Data$Union_degree 
-          0.216331529           0.049917706 
-           Data$dummy Data$Sector_A_workers 
-         -0.287926528          -0.010426461 
+          (Intercept)          Data$Union_degree 
+          0.043266306                0.009983541 
+           Data$dummy      Data$Sector_A_workers 
+         -0.057585306               -0.002085292 
        Data$Ag_forces 
-          0.005708692
+          0.001141738 
+
 
 # statistical significance
 
