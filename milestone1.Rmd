@@ -35,7 +35,7 @@ A first step in our study is to compare work hours lost in stoppages in right-to
 ```{r firstanalysis, echo=FALSE}
 
 par(pty="s") 
-boxplot(Data$Union_degree ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "% of unionized workforce")
+boxplot(Data$yearly_conflict ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "Proportion of hours lost")
 
 ```
  
@@ -45,10 +45,12 @@ The causes for this observed difference may be something else than existence or 
 
 We consider other variables that differ between right-to-work state and union-shop states, to see if there is a causative effect on the level of industrial conflict.
 
-# Unionization degree, count in percent of unionized workforce.
 ```{r uniondegree, echo=FALSE}
 
-par(pty="s") 
+par(mfrow=c(2,2))
+boxplot(Data$yearly_conflict ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "Proportion of hours lost")
+boxplot(Data$Sector_A_workers ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "% of workforce in sector A")
+boxplot(Data$Ag_forces ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "% of workforce in agriculture")
 boxplot(Data$Union_degree ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "% of unionized workforce")
 ```
 
@@ -56,37 +58,11 @@ boxplot(Data$Union_degree ~ Data$dummy, xlab="right-to-work state    union-shop 
 
 Unionization degree vary a lot between the two type of states.
 Indeed, it is logical to think that unionization is higher in forced-union state.
-And unionization might have a correlation for more industrial conflict.
-
-# union-shop dummy
-
-Which indicates whether a state is right-to-work or union-shop. By including it in the regression, we can assess its importance.
-
-# Non-unionized industry
-Sector A regroup relatively non-unionized industry, such as food, textile and apparel.
-
-```{r sectora, echo=FALSE}
-par(pty="s") 
-boxplot(Data$Sector_A_workers ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "% of workforce in sector A")
-```
-Right-to-work states seem to have more « Sector A » workers.
-Dispersion of union strength could causes less stoppages
-
-# Relative size of the agricultural labor force.
-
-```{r agriculture, echo=FALSE}
-par(pty="s") 
-boxplot(Data$Ag_forces ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "% of workforce in agriculture")
-```
-
- 
-
-
-According to the plot, agriculture seems more present in the right-to-work state and might be a factor for less stoppages, because it is a relatively non-unionized industry.
+And unionization might have a correlation for more industrial conflict. Sector A regroup relatively non-unionized industry, such as food, textile and apparel. Right-to-work states seem to have more « Sector A » workers. Dispersion of union strength could cause less stoppages. Agriculture seems more present in the right-to-work state and might be a factor for less stoppages, because it is a relatively non-unionized industry.
 
 ## The regression
 
-After doing our regression, we find such coefficient :
+After doing our regression, we find these coefficients :
 ```{r linearmodel, echo=FALSE}
 conflict.formula <- Data$yearly_conflict ~ Data$Union_degree + Data$dummy + Data$Sector_A_workers+ Data$Ag_forces
 conflict.lm <- lm(conflict.formula, data = Data)
