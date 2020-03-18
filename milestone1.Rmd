@@ -5,6 +5,9 @@ output: pdf_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+Brut_data <- read.csv("http://users.stat.ufl.edu/~winner/data/rtw.dat", header = FALSE, sep= "", dec =".", col.names = c("Post_abr", "Conflict_degree", "Union_degree", "dummy", "Sector_A_workers", "Ag_forces"))
+yearly_conflict<-(Brut_data$Conflict_degree / 5) # conflict are distributed over 5 years.
+Data<-data.frame(Brut_data,yearly_conflict)
 ```
 
 ## R Markdown
@@ -22,7 +25,10 @@ summary(cars)
 You can also embed plots, for example:
 
 ```{r pressure, echo=FALSE}
-plot(pressure)
+
+par(pty="s") 
+boxplot(Data$Union_degree ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "% of unionized workforce")
+
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
@@ -84,22 +90,8 @@ According to the plot, agriculture seems more present in the right-to-work state
 ## The regression
 
 After doing our regression, we find such coefficient :
- 
-          (Intercept)     Data$Union_degree 
-          0.043266306           0.009983541 
-           Data$dummy Data$Sector_A_workers 
-         -0.057585306          -0.002085292 
-       Data$Ag_forces 
-          0.001141738 
-          
 And such p-values associated with the coefficient : 
 
-                     		 	t value 		Pr(>|t|)    
-(Intercept)            		  0.479 		0.634692    
-Data$Union_degree      	   3.809 		0.000438 ***
-Data$dummy             	 	-1.058 		0.295837    
-Data$Sector_A_workers 	   -0.776 	 0.442250    
-Data$Ag_forces        		   0.265 	 0.792003 
 
 We observe that only unionization has sufficiently small p values to reject the null hypothesis that unionization and industrial conflict have no correlation to 0.001 significance level.
 More importantly, this statistical study does not let us conclude that there is any correlation between right-to-work law and industrial conflict.
