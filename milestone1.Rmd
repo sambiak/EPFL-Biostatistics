@@ -29,15 +29,19 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 
 ## Introduction
 
-In US labor policies, an union security agreement is an agreement between an employer and a labor union. They agree to what extent employees have to join the labor union and/or if the employers will collect fees for this participation.
+In US labor policies, an union security agreement is an agreement between an employer and a labor union. They agree to what extent employees have to join the labor union and/or if the employers will collect fees for this participation [1].
 
- In consequence, employees may be forced to join labor unions as a condition for hiring, and to pay for representation. _This means that in order to work, you have to pay (are you sure about this line ?)._
- 
-Right-to-work laws prohibit such union security agreements. It is adopted in some states, called « Right-to-work states », and not in others, called « union-shop states ».
-We can suppose that in right-to-work states, employees can be poorly represented. _That is what defenders of union-shop states say,_ and that in right-to-work states, wages are lower, and poverty rate and mortality at work rate are higher.
+The rationale behind union security agreement is that forming the union and negotiating with the employer may cost a lot of money, and the benefit from this can also come to the non-union member [2].
 
-Right-to-work laws were questioned many times. A major claim to justify their usefulness is that work hours lost in stoppages in some states were lessened thanks to the law.
+In that case, the employees may not want to be part of the union, and it won’t have enough money to negociate efficiently and will eventually collapse. In that case, situation for all employees will be worse. Union security agreement are a way to ensure that all employee pay their fair share. [2]
+
+In some cases, employees may be forced to join labor unions as a condition for hiring, and to pay for representation [3]
+Right-to-work laws prohibit such union security agreements [4]. It is adopted in some states, called « Right-to-work states », and not in others, called « union-shop states ».
+
+A major claim to justify the usefulness of right-to-work law is that work hours lost in stoppages in some states were lessened thanks to the law. [5]
+
 The purpose of this study is to assess whether this statement is true, and if there is any correlation between right-to-work laws and industrial conflict.
+
 
 ## First analysis
 
@@ -100,3 +104,14 @@ Data$Ag_forces        		   0.265 	 0.792003
 We observe that only unionization has sufficiently small p values to reject the null hypothesis that unionization and industrial conflict have no correlation to 0.001 significance level.
 More importantly, this statistical study does not let us conclude that there is any correlation between right-to-work law and industrial conflict.
 
+## References
+
+[1] Pynes, Joan. Human Resources Management for Public and Nonprofit Organizations. 2d ed. Hoboken, N.J.: John Wiley and Sons, 2004. ISBN 0-7879-7078-6
+
+[2] Towers, Brian. The Representation Gap: Change and Reform in the British and American Workplace. Oxford, England: Oxford University Press, 1997. ISBN 0-19-829319-4; Holley, William H.; Jennings, Kenneth M.; and Wolters, Roger S. The Labor Relations Process. 9th ed. Florence, Ky.: Cengage Learning, 2008. ISBN 0-324-42144-3; Beatty, David M. Putting the Charter to Work: Designing a Constitutional Labour Code. Toronto: McGill-Queen's Press - MQUP, 1987. ISBN 0-7735-0601-2; Bar-Niv, Zvi H. International Labour Law Reports, Volume 8. Leiden, The Netherlands: Martinus Nijhoff Publishers, 1990. ISBN 0-7923-0429-2
+
+[3] Baird, Charles W. "Right to work before and after 14 (b)." Journal of Labor Research 19.3 (1998): 471-493.
+
+[4] "Employer/Union Rights and Obligations". National Labor Relations Board. Retrieved July 7, 2017.
+
+[5] Right to Work National Newsletter, Vol. 10, No. 1 (Jan. 27, 1964), p. 4 and Chamber of Commerce of the United States, Exposed: Union Myths A bout Right-to-Work Laws, 1964, p. 14. 5U.S. Bureau of Labor
