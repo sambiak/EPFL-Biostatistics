@@ -1,6 +1,21 @@
 ---
 title: "Milestone1"
 output: pdf_document
+geometry: margin=2.5cm
+header-includes:
+  - \makeatletter
+  - \newcommand\oddhead[1]{\gdef\@oddhead{\reset@font#1}}
+  - \newcommand\evenhead[1]{\gdef\@evenhead{\reset@font#1}}
+  - \newcommand\oddfoot[1]{\gdef\@oddfoot{\reset@font#1}}
+  - \newcommand\evenfoot[1]{\gdef\@evenfoot{\reset@font#1}}
+  - \makeatother
+  - \oddhead{\hfil Guillaume Augustoni, Ariane Jacquemin,  Mammad Hajili \hfil}
+
+
+fontsize: 12pt
+author: "Guillaume Augustoni, Ariane Jacquemin, Mammad Hajili"
+
+
 ---
 
 ```{r setup, include=FALSE}
