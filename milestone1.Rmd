@@ -54,7 +54,10 @@ boxplot(Data$yearly_conflict ~ Data$dummy, xlab="right-to-work state    union-sh
 
 ```
  
-The causes for this observed difference may be something else than existence or non-existence of a right-to-work law. Therefore we will use factors that vary between the two categories of states, and conduct a multiple linear regression.
+There is in fact no statistical significant proof to say that the two means are different. 
+
+We will perform a multiple linear regression to try to find any correlation between right-to-work law and industrial conflict.
+Therefore we will use factors that vary between the two categories of states.
 
 ## The parameters
 
@@ -63,17 +66,17 @@ We consider other variables that differ between right-to-work state and union-sh
 ```{r uniondegree, echo=FALSE}
 
 par(mfrow=c(2,2))
+boxplot(Data$Union_degree ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "% of unionized workforce")
 boxplot(Data$yearly_conflict ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "Proportion of hours lost")
 boxplot(Data$Sector_A_workers ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "% of workforce in sector A")
 boxplot(Data$Ag_forces ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "% of workforce in agriculture")
-boxplot(Data$Union_degree ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "% of unionized workforce")
 ```
 
  
 
-Unionization degree vary a lot between the two type of states.
+Unionization degree means is different between the two type of state at the 0.1% level of significance.
 Indeed, it is logical to think that unionization is higher in forced-union state.
-And unionization might have a correlation for more industrial conflict. Sector A regroup relatively non-unionized industry, such as food, textile and apparel. Right-to-work states seem to have more « Sector A » workers. Dispersion of union strength could cause less stoppages. Agriculture seems more present in the right-to-work state and might be a factor for less stoppages, because it is a relatively non-unionized industry.
+And unionization might have a correlation for more industrial conflict. Sector A regroup relatively non-unionized industry, such as food, textile and apparel. Right-to-work states seem to have more « Sector A » workers (means are different at the 5% significance level). Dispersion of union strength could cause less stoppages. Agriculture seems more present in the right-to-work state (means different at the 1% level of significance) and might be a factor for less stoppages, because it is a relatively non-unionized industry.
 
 ## The regression
 
