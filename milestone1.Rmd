@@ -54,7 +54,7 @@ boxplot(Data$yearly_conflict ~ Data$dummy, xlab="right-to-work state    union-sh
 
 ```
  
-There is in fact no statistical significant proof to say that the two means are different. 
+After a t-test we find that there is no statistical significant that the two means are different. 
 
 We will perform a multiple linear regression to try to find any correlation between right-to-work law and industrial conflict.
 Therefore we will use factors that vary between the two categories of states.
@@ -63,9 +63,8 @@ Therefore we will use factors that vary between the two categories of states.
 
 We consider other variables that differ between right-to-work state and union-shop states, to see if there is a causative effect on the level of industrial conflict.
 
-```{r uniondegree, echo=FALSE}
+```{r uniondegree, echo=FALSE, fig.height=8}
 
-X11(width=8, height=8)
 par(mfrow=c(2,2))
 boxplot(Data$Union_degree ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "% of unionized workforce")
 boxplot(Data$yearly_conflict ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "Proportion of hours lost")
@@ -81,16 +80,24 @@ And unionization might have a correlation for more industrial conflict. Sector A
 
 ## The regression
 
-After doing our regression, we find these coefficients :
+We want to find if the right to work laws are dirrectly correlated with hours lost. For this we compare two linear models with ANOVA. One uses all data and the other is missing the dummy variable. 
 ```{r linearmodel, echo=FALSE}
-conflict.formula <- Data$yearly_conflict ~ Data$Union_degree + Data$dummy + Data$Sector_A_workers+ Data$Ag_forces
-conflict.lm <- lm(conflict.formula, data = Data)
-coef(conflict.lm)
+conflict.formulafull <- Data$yearly_conflict ~ Data$Union_degree + Data$Sector_A_workers+ Data$Ag_forces + Data$dummy 
+conflict.formulamiss <- Data$yearly_conflict ~ Data$Union_degree + Data$Sector_A_workers+ Data$Ag_forces
+conflict.lmfull <- lm(conflict.formulafull, data = Data)
+conflict.lmmiss <- lm(conflict.formulamiss, data = Data)
+a <- anova(conflict.lmmiss, conflict.lmfull)
 ```
 
-And such p-values associated with the coefficient : 
+We do an F-Test to compare variances :
+```{r variances, echo=FALSE}
+var.test(conflict.lmfull, conflict.lmmiss)
+```
+Adding the dummy variable does not reduce variance in the model in a statisticaly significant way. We use this to conclude that controling for the other factors right to work laws have no influence on hours lost due to conflict.
+
+We do F-tests on every coefficent in the full model : 
 ```{r pvalue, echo=FALSE}
-summary(conflict.lm)
+drop1(conflict.lmfull, test="F")
 ```
 
 We observe that only unionization has sufficiently small p values to reject the null hypothesis that unionization and industrial conflict have no correlation to 0.001 significance level.
