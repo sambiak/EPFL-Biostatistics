@@ -12,7 +12,28 @@ boxplot(Data$yearly_conflict ~ Data$dummy, xlab="right-to-work state    union-sh
 
 # Statistical test tentative
 
+# Explanation :
+# In order to compare two means of two different populations of supposed equal variances, we use the t-test.
+# When variances are not equal, we use the Welch's t-test.
+# By default, unless you precise it, R perform Welch's t-test when you type t-test(x,y)
+
 > t.test(Data$yearly_conflict ~ Data$dummy)
+
+	Welch Two Sample t-test
+
+data:  Data$yearly_conflict by Data$dummy
+t = -1.2102, df = 35.739, p-value = 0.2342
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.17173745  0.04339882
+sample estimates:
+mean in group 0 mean in group 1 
+      0.2272381       0.2914074 
+      
+# Null hypothesis is that the two means are equal
+# Probability of null hypothesis is p = 0.2342 which is REALLY HIGH. We should have at least p < 0.10
+# We can't conclude from this result that there is a difference statistically significant between the two mean
+# However that is not what the paper says.
 
 # Parameters
 # 1) Unionization degree
