@@ -65,6 +65,7 @@ We consider other variables that differ between right-to-work state and union-sh
 
 ```{r uniondegree, echo=FALSE}
 
+X11(width=8, height=8)
 par(mfrow=c(2,2))
 boxplot(Data$Union_degree ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "% of unionized workforce")
 boxplot(Data$yearly_conflict ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "Proportion of hours lost")
