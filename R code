@@ -42,17 +42,29 @@ graphics.off()
 par(pty="s") 
 boxplot(Data$Union_degree ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "% of unionized workforce")
 
+t.test(Data$Union_degree ~ Data$dummy)
+
+# Statistically significant at the 0.1% level. Null Hypothesis is rejected.
+
 # 3) Non-unionized industry
 
 graphics.off()
 par(pty="s") 
 boxplot(Data$Sector_A_workers ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "% of workforce in sector A")
 
+t.test(Data$Sector_A_workers ~ Data$dummy)
+
+# Statistically significant at the 5% level. Null Hypothesis is rejected.
+
 # 4) Relative size of agricultural labor force
 
 graphics.off()
 par(pty="s") 
 boxplot(Data$Ag_forces ~ Data$dummy, xlab="right-to-work state    union-shop state", ylab = "% of workforce in agriculture")
+
+t.test(Data$Ag_forces ~ Data$dummy)
+
+# Statistically significant at the 1% level. Null Hypothesis is rejected.
 
 # multiple linear regression
 
